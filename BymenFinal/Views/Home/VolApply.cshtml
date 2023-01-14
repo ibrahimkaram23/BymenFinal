@@ -1,0 +1,203 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Colorlib Templates">
+    <meta name="author" content="Colorlib">
+    <meta name="keywords" content="Colorlib Templates">
+
+    <!-- Title Page-->
+    <title>BEYMUN - Volanteer</title>
+    <link rel="icon" href="~/Content/images/FINAL -02.png" type="image/x-icon">
+    <!-- Icons font CSS-->
+
+    <link href="/Content/vol/vendor/mdi-font/css/material-design-iconic-font.min.css" rel="stylesheet" media="all">
+    <link href="/Content/vol/vendor/font-awesome-4.7/css/font-awesome.min.css" rel="stylesheet" media="all">
+    <!-- Font special for pages-->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+
+    <!-- Vendor CSS-->
+    <link href="/Content/vol/vendor/select2/select2.min.css?v=2" rel="stylesheet" media="all">
+    <link href="/Content/vol/vendor/datepicker/daterangepicker.css?v=2" rel="stylesheet" media="all">
+
+
+    <!-- Main CSS-->
+    <link href="~/Content/vol/css/main.css?v=7" rel="stylesheet" media="all">
+</head>
+
+<body>
+    <div class="page-wrapper p-t-100 p-b-100 font-robo" style="background: #017777;">
+        <div class="wrapper wrapper--w680">
+            <div class="card card-1">
+                <div class="card-heading"></div>
+                <div class="card-body">
+                    <h2 class="title">Apply as a volanteer</h2>
+                    <div style="text-align:center">
+                        <a href="/Home/Index"><img src="~/Content/images/FINAL -02.png" style="height:70px; width:90px" /></a>
+                    </div>
+                    @if (TempData["Error"] != null)
+                    {
+                        <div style="background: #C70039; color: black; text-align: center; height: 25px; line-height: 2; border-radius: 50px; margin-bottom: 20px;">
+                            <span>@TempData["Error"]</span>
+                        </div>
+                    }
+                    @if (TempData["Success"] != null)
+                    {
+                        <div style="background: #48c301; color: black; text-align: center; height: 25px; line-height: 2; border-radius: 50px; margin-bottom: 20px; ">
+                            <span>@TempData["Success"]</span>
+                        </div>
+                    }
+                    <form method="POST">
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" required placeholder="Full Name (as written on your AUB ID)" name="fullName">
+                        </div>
+                        <div class="row row-space">
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="text" placeholder="Phone Number" required name="phoneNumber">
+                                </div>
+
+                            </div>
+                            <div class="col-2">
+                                <div class="input-group">
+                                    <input class="input--style-1" type="text" placeholder="Major" required name="major">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <input class="input--style-1" type="text" required placeholder="Expected Graduation Date (e.g. Spring 2022)" name="exGrad">
+                        </div>
+                        <div>
+                            <label>
+                                Were you ever on academic probation?
+                            </label>
+                            <div class="form-check" style="margin-top: 10px;">
+                                <input class="form-check-input" type="radio" value="True" name="academicProbation" id="flexRadioDefault1">
+                                <label class="form-check-label" for="flexRadioDefault1">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check" style="margin-bottom: 10px;">
+                                <input class="form-check-input" type="radio" value="false" name="academicProbation" id="flexRadioDefault2" checked>
+                                <label class="form-check-label" for="flexRadioDefault2">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label>
+                                Will you be attending AUB during FALL 2022 and SPRING 2023
+                            </label>
+                            <div class="form-check" style="margin-top: 10px;">
+                                <input class="form-check-input" type="radio" value="true" name="attendAUB" id="flexRadioDefault3">
+                                <label class="form-check-label" for="flexRadioDefault3">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check" style="margin-bottom: 10px;">
+                                <input class="form-check-input" type="radio" value="false" name="attendAUB" id="flexRadioDefault4" checked>
+                                <label class="form-check-label" for="flexRadioDefault4">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <label>
+                                Have you been a part of BEYMUN before?
+                            </label>
+                            <div class="form-check" style="margin-top: 10px;">
+                                <input class="form-check-input" type="radio" value="true" name="partBey" id="flexRadioDefault5">
+                                <label class="form-check-label" for="flexRadioDefault5">
+                                    Yes
+                                </label>
+                            </div>
+                            <div class="form-check" style="margin-bottom: 10px;">
+                                <input class="form-check-input" type="radio" value="false" name="partBey" id="flexRadioDefault6" checked>
+                                <label class="form-check-label" for="flexRadioDefault6">
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <div class="input-group">
+                            <div class="rs-select2 js-select-simple select--no-search">
+                                <select name="position" id="position" required onchange="GetPos()">
+                                    <option disabled="disabled" value="" selected="selected">
+                                        Which position are you interested in?
+                                    </option>
+                                    <option value="1">
+                                        Team Member for Faculty & Delegate Relations National
+                                    </option>
+                                    <option value="2">
+                                        Team Member for Faculty & Delegate Relations International
+                                    </option>
+                                    <option value="3">
+                                        Team Member for Finance & Fundraising Sponsorship
+                                    </option>
+                                    <option value="4">
+                                        Team Member for Finance & Fundraising Social Events
+                                    </option>
+                                    <option value="5">
+                                        Team Member Marketing
+                                    </option>
+                                    <option value="6">
+                                        Team Member Graphic Design
+                                    </option>
+                                    <option value="7">
+                                        Team Member Logistics
+                                    </option>
+                                    <option value="8">
+                                        Team Member Development (IT)
+                                    </option>
+                                    <option value="9">
+                                        Team Member for Safety and Security
+                                    </option>
+                                </select>
+                                <div class="select-dropdown"></div>
+                            </div>
+                        </div>
+                        <div id="VolRoute">
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="/Content/vol/vendor/jquery/jquery.min.js"></script>
+    <!-- Vendor JS-->
+    <script src="/Content/vol/vendor/select2/select2.min.js"></script>
+    <script src="/Content/vol/vendor/datepicker/moment.min.js"></script>
+    <script src="/Content/vol/vendor/datepicker/daterangepicker.js"></script>
+
+    <!-- Main JS-->
+    <script src="~/Content/vol/js/global.js"></script>
+    <script>
+        function GetPos() {
+            $.get("/Home/VolRoute", {
+                position: $("#position").val()
+
+            }, function (data) {
+                $("#VolRoute").html(data);
+            });
+        }
+    </script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+
+</html>
+<!-- end document-->
+@*<div class="input-group">
+        <div class="rs-select2 js-select-simple select--no-search">
+            <select name="gender">
+                <option disabled="disabled" selected="selected">GENDER</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+            </select>
+            <div class="select-dropdown"></div>
+        </div>
+    </div>*@

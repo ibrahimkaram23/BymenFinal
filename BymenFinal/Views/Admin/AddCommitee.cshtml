@@ -1,0 +1,45 @@
+﻿@model BymenFinal.Models.commitee
+
+@{
+    ViewBag.Title = "AddCommittee";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            <span>
+                @TempData["Error"]
+            </span>
+        </div>
+    }
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add Committee</h4>
+
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Committee Name</label>
+                        @Html.TextBoxFor(n => n.comName, new { @class = "form-control", placeholder = "Name" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.comName)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Committee Type</label>
+
+                        @Html.DropDownListFor(n => n.comType, new SelectList(ViewBag.modes, "Value", "Text") , "Select Mode", new { @class = "form-control", placeholder = "Position" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.comType)</span>
+
+                    </div>                  
+                    <button type="submit" class="btn btn-primary mr-2">Add</button>
+                    <a class="btn btn-dark" href="/Admin/Commitees">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

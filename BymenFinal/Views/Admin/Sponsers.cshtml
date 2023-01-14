@@ -1,0 +1,39 @@
+﻿@model List<BymenFinal.Models.sponser>
+@{
+    ViewBag.Title = "Sponsers";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Sponsers</h4>
+                <a class="btn btn-primary" href="/Admin/AddSponser">Add Sponser</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Photo </th>
+                                <th> Name </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td><img src="~/Content/images/Sponsers/@item.Image" alt="image" /></td>
+                                    <td> @item.Name </td>
+                                    <td><a class="btn btn-danger" href="/Admin/DeleteSponser/@item.Id">Delete</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,29 @@
+﻿@model List<BymenFinal.Models.Gallery>
+@{
+    ViewBag.Title = "Gallery";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="commites-top"></div>
+
+<!-- ==========================
+     Gallery Section 
+   ============================-->
+<div class="container">
+    <section id="gallery" class="wow fadeInUp">
+
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Check our gallery from the recent events</p>
+            </div>
+        </div>
+
+        <div class="owl-carousel gallery-carousel">
+            @foreach (var item in Model)
+            {
+                <img src="~/Content/images/Gallary/@item.Image" alt="">
+            }
+            
+        </div>
+    </section>
+</div>

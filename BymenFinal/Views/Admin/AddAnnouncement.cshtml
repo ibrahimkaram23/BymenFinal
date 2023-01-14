@@ -1,0 +1,47 @@
+﻿@model BymenFinal.Models.Announcement
+@{
+    ViewBag.Title = "AddAnnouncement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            <span>
+                @TempData["Error"]
+            </span>
+        </div>
+    }
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add Announcement</h4>
+
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Head</label>
+                        @Html.TextBoxFor(n => n.Head, new { @class = "form-control", placeholder = "Head" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.Head)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Body</label>
+                        @Html.TextAreaFor(n => n.Body, new { @class = "form-control", placeholder = "Body", rows = "4" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.Body)</span>
+
+                    </div>
+
+                    
+
+                    <button type="submit" class="btn btn-primary mr-2">Add</button>
+                    <a class="btn btn-dark" href="/Admin/Announcement">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

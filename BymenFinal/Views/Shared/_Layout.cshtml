@@ -1,0 +1,207 @@
+﻿<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+<head>
+    <title>BEYMUN - @ViewBag.Title</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="icon" href="~/Content/images/FINAL -02.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Montserrat:300,400,700%7CPoppins:300,400,500,700,900">
+    <link rel="stylesheet" href="/Content/css/bootstrap.css">
+    <link rel="stylesheet" href="/Content/css/fonts.css">
+    <link rel="stylesheet" href="/Content/css/style.css?v=5">
+    <link href="~/Content/css/infinite-slider.css?v=2" rel="stylesheet" />
+
+    <style>
+        .ie-panel {
+            display: none;
+            background: #212121;
+            padding: 10px 0;
+            box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);
+            clear: both;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="ie-panel"><a href="http://windows.microsoft.com/en-US/internet-explorer/"><img src="~/Content/images/ie8-panel/warning_bar_0000_us.jpg" height="42" width="820" alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."></a></div>
+    <div class="preloader">
+        <div class="preloader-body">
+            <div class="cssload-container">
+                <div class="cssload-speeding-wheel"><img src="~/Content/images/FINAL -02.png"/></div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="page">
+        <header class="section page-header">
+            <!--RD Navbar-->
+            <div class="rd-navbar-wrap">
+                <nav class="rd-navbar rd-navbar-classic" data-layout="rd-navbar-fixed" data-sm-layout="rd-navbar-fixed" data-md-layout="rd-navbar-fixed" data-md-device-layout="rd-navbar-fixed" data-lg-layout="rd-navbar-static" data-lg-device-layout="rd-navbar-static" data-xl-layout="rd-navbar-static" data-xl-device-layout="rd-navbar-static" data-lg-stick-up-offset="46px" data-xl-stick-up-offset="46px" data-xxl-stick-up-offset="46px" data-lg-stick-up="true" data-xl-stick-up="true" data-xxl-stick-up="true">
+                    <div class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1" data-rd-navbar-toggle=".rd-navbar-collapse"><span></span></div>
+                    <div class="rd-navbar-aside-outer rd-navbar-collapse bg-gray-dark">
+                        <div class="rd-navbar-aside">
+                            <ul class="list-inline navbar-contact-list">
+                                
+                                <li>
+                                    <div class="unit unit-spacing-xs align-items-center">
+                                        <div class="unit-left"><span class="icon text-middle fa-envelope"></span></div>
+                                        <div class="unit-body"><a href="mailto:Info.beymun@gmail.com">Info.beymun@gmail.com</a></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="unit unit-spacing-xs align-items-center">
+                                        <div class="unit-left"><span class="icon text-middle fa-map-marker"></span></div>
+                                        <div class="unit-body"><a href="https://goo.gl/maps/9a6ycEpeNFvtLUQGA">American University of Beirut</a></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="unit unit-spacing-xs align-items-center">
+                                        <a class="" href="/Home/AboutUs">About Us</a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <ul class="social-links">
+                                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-linkedin" target="_blank" href="https://www.linkedin.com/company/beymun/"></a></li>
+                                <li><a class="icon icon-sm icon-circle icon-circle-md icon-bg-white fa-instagram" target="_blank" href="https://www.instagram.com/beymunconference/"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="rd-navbar-main-outer" style="background-color: #6db2b4;">
+                        <div class="rd-navbar-main">
+                            <!--RD Navbar Panel-->
+                            <div class="rd-navbar-panel">
+                                <!--RD Navbar Toggle-->
+                                <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
+                                <!--RD Navbar Brand-->
+                                <div class="rd-navbar-brand">
+                                    <!--Brand-->
+                                    <a class="brand" href="/Home/Index">
+                                        <img class="brand-logo-dark" src="~/Content/images/FINAL -02.png" alt="" style="width: 70px; height: 60px;" width="50" height="8" />
+                                    </a>
+                                </div>
+                            </div>
+                            @{
+                            string url = Request.Url.ToString().ToLower();
+                            string homeActive = "";
+                            string aboutActive = "";
+                            string confActive = "";
+                            string annActive = "";
+                            string gallActive = "";
+                            if (url.Contains("index") || url == "/")
+                            {
+                            homeActive = "active";
+                            }
+                            else if (url.Contains("aboutus"))
+                            {
+                            aboutActive = "active";
+                            }
+                            else if (url.Contains("conference") || url.Contains("commitee") || url.Contains("rules") || url.Contains("guide"))
+                            {
+                            confActive = "active";
+                            }
+                            else if (url.Contains("announcement"))
+                            {
+                            annActive = "active";
+                            }
+                            else if (url.Contains("gallery"))
+                            {
+                            gallActive = "active";
+                            }
+                            }
+                            <div class="rd-navbar-main-element">
+                                <div class="rd-navbar-nav-wrap">
+                                    <ul class="rd-navbar-nav">
+                                        <li class="rd-nav-item @homeActive">
+                                            <a class="rd-nav-link" href="/Home/Index">Home</a>
+                                        </li>
+                                        <!-- <li class="rd-nav-item @aboutActive">
+                                            <a class="rd-nav-link" href="/Home/AboutUs">About US</a>
+                                        </li> -->
+                                        <li class="rd-nav-item @confActive">
+                                            <div class="dropdown show">
+                                                <a class="rd-nav-link dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    Conference Details
+                                                </a>
+
+                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                    <a class="dropdown-item" href="/Home/Commitees">Committees</a>
+                                                    <a class="dropdown-item" href="/Home/RulesofProcedure">Rules of Procedure</a>
+                                                    <a class="dropdown-item" href="/Home/DelegatesGuide">Delegates Guide</a>
+                                                    <a class="dropdown-item" href="/Home/Conference">Conference Schedule</a>
+                                                </div>
+                                            </div>
+                                            @*<a class="rd-nav-link" href="/Home/Conference"></a>
+                                            <ul class=" ">
+                                                <li class=" "></li>
+                                                <li class=" "></li>
+                                                <li class=" "></li>
+                                                <li class=" "></li>
+                                            </ul>*@
+                                        </li>
+                                        <li class="rd-nav-item @annActive">
+                                            <a class="rd-nav-link" href="/Home/Announcement">Announcements</a>
+                                        </li>
+                                        <li class="rd-nav-item @gallActive">
+                                            <a class="rd-nav-link" href="/Home/Gallery">Gallery</a>
+                                        </li>
+                                        <li class="rd-nav-item">
+                                            <a class="button-width-100 button-primary button-circle button-sm button" href="/Home/Apply">Apply as a Delegate</a>
+                                        </li>
+                                        <li class="rd-nav-item">
+                                            <a class="button-width-100 button-primary button-circle button-sm button" href="/Home/ApplyDelegation">Apply as a Delegation</a>
+                                        </li>
+                                        @*<li class="rd-nav-item">
+                                            <a class="button-width-100 button-primary button-circle button-sm button" href="/Home/VolApply">Apply Volunteer</a>
+                                        </li>*@
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        @RenderBody()
+        <!--Footer-->
+        <footer class="section footer-classic section-sm">
+            <div class="container">
+                <div class="row row-30 justify-content-center">
+
+                    <div class="col-lg-6 col-sm-8 wow fadeInUp">
+                        <P class="footer-classic-title">contact info</P>
+                        <div class="d-block offset-top-0">
+                            <span class="d-lg-block">Beirut Model United Nations - AUB</span>
+                        </div><a class="d-inline-block accent-link" href="mailto:Info.beymun@gmail.com">Info.beymun@gmail.com</a>
+                        <ul class="social-links">
+                            <li><a class="fa fa-linkedin" target="_blank" href="https://www.linkedin.com/company/beymun/"></a></li>
+                            <li><a class="fa fa-instagram" target="_blank" href="https://www.instagram.com/beymunconference/"></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-6 wow fadeInLeft text-center">
+                        <!--Brand--><a class="brand" href="http://beymun.net/Home/Index"><img class="brand-logo-dark" src="/Content/images/FINAL -02.png" alt="" width="80" height="10" style="height:200px" /><img class="brand-logo-light" src="/Content/images/FINAL -02.png" alt="" width="80" height="10"  style="height:200px" /></a>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="container wow fadeInUp" data-wow-delay=".4s">
+                <div class="footer-classic-aside">
+                    <p class="rights" style="margin-right:auto; margin-left:auto;"><span>&copy;&nbsp;</span><span class="copyright-year"></span>. All Rights Reserved.</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <div class="snackbars" id="form-output-global"></div>
+    <script src="~/Content/js/core.min.js"></script>
+    <script src="~/Content/js/script.js"></script>
+    
+    <!--coded by Drel-->
+</body>
+</html>
+

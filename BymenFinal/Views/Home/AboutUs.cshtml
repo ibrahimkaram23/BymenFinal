@@ -1,0 +1,88 @@
+﻿@model List<BymenFinal.Models.team>
+@{
+    ViewBag.Title = "About Us";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="section section-intro context-dark">
+    <div class="intro-bg" style="background: url(/Content/images/C091E5B7-E65C-4D03-9D40-088A3C423D23_1_105_c.jpeg) no-repeat;background-size:cover;background-position: top center;"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-xl-8 text-center">
+                <h1 class="font-weight-bold wow fadeInLeft">About Us</h1>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- About page about section-->
+<section class="section section-md">
+    <div class="container">
+        <div class="row row-40 justify-content-center">
+            <div class="col-lg-12 col-12">
+                <div class="offset-top-45 offset-lg-right-45">
+                    <div class="section-name wow fadeInRight" data-wow-delay=".2s">About us</div>
+                    <h3 class="wow fadeInLeft text-capitalize" data-wow-delay=".3s">A Few Words<span class="text-primary"> about us</span></h3>
+                    <p class="font-weight-bold text-gray-dark wow fadeInUp" data-wow-delay=".4s">-	Who We Are</p>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">
+                        We are a student-led initiative to provide delegates with a platform to debate and discuss real-world issues that develop knowledge and way of thinking.
+                        Beirut Model United Nations (BEYMUN) is an annual Model United Nations Conference led by students from the American University of Beirut (AUB). BEYMUN is one of the most renowned in Lebanon and among the largest in the Middle East.
+                    </p>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">The weekend conference is held at the American University of Beirut (AUB), for a period of 3 days, starting with an opening ceremony to welcome the delegates, committee sessions for debating, an exciting social night and ends with a closing ceremony to wrap up a very successful conference.</p>
+
+                    <p class="font-weight-bold text-gray-dark wow fadeInUp" data-wow-delay=".4s">-	Mission</p>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">
+                        This year’s theme is: “Generations of Tomorrow: A Beacon of Hope”, incorporated into our logo as the beautiful Beirut lighthouse. Our Mission is to remind our delegates that they truly are the beacon of hope and that they hold the power to make this world a better place. We want to ensure that by the end of those 3 days, our delegates feel a little lighter, stronger and ready for the next step in their journey.
+                    </p>
+
+                    <p class="font-weight-bold text-gray-dark wow fadeInUp" data-wow-delay=".4s">-	Values</p>
+                    <p class="wow fadeInUp" data-wow-delay=".4s">
+                        We believe that Model United Nations create certain diplomatic and social skills that cannot be attained in a different way. Confidence, leadership, critical thinking and becoming solution-oriented are only a few of the valuable skills our delegates take home with them and carry for the rest of their life. For this, at BEYMUN, we uphold our values to its highest ability. This conference is built around respect, kindness, team work and most importantly, professionalism. We aim on making this conference a safe and intellectual place for all of our delegates, a place where they will make mistakes and learn from them, a place where they will grow and prosper and learn about the immense potential that they withhold.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Our team-->
+<section class="section section-md">
+    <div class="container">
+        <div class="row row-50 justify-content-center">
+            <div class="col-md col-12 text-center">
+                <div class="section-name wow fadeInRight" data-wow-delay=".2s">People Behind Our Success</div>
+                <h3 class="wow fadeInLeft text-capitalize" data-wow-delay=".3s">Meet Our<span class="text-primary"> Team</span></h3>
+                <p class="block-675">Coming Soon</p>
+            </div>
+        </div>
+        <div class="row row-50 justify-content-center">
+            @foreach (var item in Model)
+            {
+                <div class="col-xl-4 col-sm-6 col-10 wow shadow fadeInLeft" data-wow-delay=".3s">
+                    <div class="team-classic-wrap">
+                        <div class="team-classic-img">
+                            <img src="~/Content/images/Team/@item.image" alt="" width="370" height="198" />
+                        </div>
+                        <div class="block-320 text-center">
+                            <h4 class="font-weight-bold">@item.Name</h4>
+                            <span class="d-block">@item.Position</span>
+                            <p>@item.qute</p>
+                            <hr class="offset-top-40" />
+                            <ul class="justify-content-center social-links offset-top-30">
+                                <li><a class="fa fa-linkedin" href="#"></a></li>
+                                <li><a class="fa fa fa-twitter" href="#"></a></li>
+                                <li><a class="fa fa-facebook" href="#"></a></li>
+                                <li><a class="fa fa-instagram" href="#"></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            }
+            
+            
+        </div>
+    </div>
+</section>
+
+

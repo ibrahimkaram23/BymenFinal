@@ -1,0 +1,56 @@
+﻿@model BymenFinal.Models.team
+@{
+    ViewBag.Title = "AddTeamMember";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="row">
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger text-center">
+            <span>
+                @TempData["Error"]
+            </span>
+        </div>
+    }
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Add Team Member</h4>
+
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleInputName1">Name</label>
+                        @Html.TextBoxFor(n => n.Name, new { @class = "form-control", placeholder = "Name" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.Name)</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Position</label>
+                        @Html.TextBoxFor(n => n.Position, new { @class = "form-control", placeholder = "Position" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.Position)</span>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1">Qoute</label>
+                        @Html.TextBoxFor(n => n.qute, new { @class = "form-control", placeholder = "Qoute" })
+                        @*<input type="text" class="form-control" id="exampleInputName1" placeholder="Name">*@
+                        <span class="text-danger">@Html.ValidationMessageFor(n => n.qute)</span>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label>File upload</label>
+                        <input type="file" name="img" class="form-control">
+                       
+                    </div>
+
+                    <button type="submit" class="btn btn-primary mr-2">Add</button>
+                    <a class="btn btn-dark" href="/Admin/OurTeam">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+

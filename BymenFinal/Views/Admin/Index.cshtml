@@ -1,0 +1,141 @@
+﻿@model List<BymenFinal.Models.person>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-4 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h5>Registration Count</h5>
+                <div class="row">
+                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                            <h2 class="mb-0">@Session["RegCount"]</h2>
+                                
+                        </div>
+                           
+                    </div>
+                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h5>In-person Count</h5>
+                <div class="row">
+                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                            <h2 class="mb-0">@Session["InPerson"]</h2>
+                                
+                        </div>
+                            
+                    </div>
+                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h5>Online Count</h5>
+                <div class="row">
+                    <div class="col-8 col-sm-12 col-xl-8 my-auto">
+                        <div class="d-flex d-sm-block d-md-flex align-items-center">
+                            <h2 class="mb-0">@Session["Online"]</h2>
+                        </div>
+                    </div>
+                    <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
+                        <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">List of registers</h4>
+                <a href="/Admin/DownloadPart" class="btn btn-primary">Save to excel sheet</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Student Name </th>
+                                <th> Email Address </th>
+                                <th> University/School </th>
+                                <th> Major </th>
+                                <th> Year </th>
+                                <th> Mode </th>
+                                <th> Committee </th>
+                                <th> Age </th>
+                                <th> Enrolled As </th>
+ 
+                                
+                                <!-- <th> Reg Type </th> -->
+                                <th> Gender </th>
+                                <th> Nationality </th>
+                                <th> Country of Residence </th>
+                                <th> Phone Number </th>
+                                <th> Vaccinated </th>
+                                <th> Doses </th>
+                                <th> Passport Photo/ID </th>
+                                <th> Vaccination Certificate</th>
+                                <!-- <th> Payment Proof</th> -->
+                                <th> How Heard </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="~/Content/Partecepant/ProfilePic/@item.profilePic" alt="image" />
+                                        <span class="pl-2"> @item.fullName</span>
+                                    </td>
+                                    <td> @item.emailAddress </td>
+                                    <td> @item.university </td>
+                                    <td> @item.eduMajor </td>
+                                    <td> @item.eduYear </td>
+                                    <td> @item.conferaneModel </td>
+                                    <td> @item.committee </td>
+                                    
+                                    @*
+                                    <td> @item.age </td>
+                                    <td> @item.enrolledAs </td>
+                                    <td> @item.gender </td>
+                                    <td> @item.nationality </td>
+                                    <td> @item.country </td>
+                                    <td> @item.countryCode @item.phoneNb </td>
+                                    <td> @item.isVaccinated </td>
+                                    <td> @item.doses </td>
+                                    <td> <a href="/Admin/Download?Id=@item.passportPict" class="btn btn-primary">Download</a></td>
+                                    <td> <a href="/Admin/Download?Id=@item.vaccinationCert" class="btn btn-primary">Download</a></td>
+                                    <td> @item.reference </td>
+                                    *@
+                                    
+
+                                    @*<td> @item.partType </td>*@
+                                    @*<td> <a href="/Admin/Download?Id=@item.PaymentProof" class="btn btn-primary">Download</a></td>*@
+                                </tr>
+                            }
+                            
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

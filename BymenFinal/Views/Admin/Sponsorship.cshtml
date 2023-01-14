@@ -1,0 +1,58 @@
+﻿@model List<BymenFinal.Models.Volanteer>
+@{
+    ViewBag.Title = "Sponsorship";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row ">
+    <div class="col-12 grid-margin">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">List of Sponsorship Volanteers</h4>
+                <a href="/Admin/DownloadVol/3" class="btn btn-primary">Save to excel sheet</a>
+                <a href="/Admin/DownloadAllVol/3" class="btn btn-danger">Reset Form</a>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th> Student Name </th>
+                                <th> Phone Number </th>
+                                <th> Major </th>
+                                <th> Graduation Date </th>
+                                <th> Academic Probation </th>
+                                <th> Attending AUB </th>
+                                <th> Part of BEYMUN </th>
+                                <th> Interset </th>
+                                <th> EN Rate </th>
+                                <th> Sponsership BG </th>
+                                <th> Prospective Sponsors </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.fullName
+                                    </td>
+                                    <td> @item.phoneNumber </td>
+                                    <td> @item.major </td>
+                                    <td> @item.exGrad </td>
+                                    <td> @item.academicProbation </td>
+                                    <td> @item.attendAUB </td>
+                                    <td> @item.partBey </td>
+                                    <td> @item.gIntersted </td>
+                                    <td> @item.gEnglishRate </td>
+                                    <td> @item.sBackgroundSponser </td>
+                                    <td> @item.sProspectiveSponsors </td>
+                                    <td><a href="/Admin/DelVol/@item.Id" class="btn btn-danger">Delete</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

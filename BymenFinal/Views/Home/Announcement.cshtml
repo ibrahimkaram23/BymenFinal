@@ -1,0 +1,25 @@
+﻿@model List<BymenFinal.Models.Announcement>
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="commites-top"></div>
+
+<div class="container">
+    @foreach (var item in Model)
+    {
+        <div class="card text-center">
+            <div class="card-header">
+                Announcement
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">@item.Head</h5>
+                <p class="card-text">@item.Body</p>
+
+            </div>
+        </div>
+    }
+    
+</div>
+
+

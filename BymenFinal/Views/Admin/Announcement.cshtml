@@ -1,0 +1,42 @@
+﻿@model List<BymenFinal.Models.Announcement>
+@{
+    ViewBag.Title = "Announcement";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Announcement</h4>
+                <a class="btn btn-primary" href="/Admin/AddAnnouncement">Add an Announcement</a>
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th> Head </th>
+                                <th> Body </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+
+                                    <td> @item.Head </td>
+                                    <td> @item.Body </td>
+                                    <td><a class="btn btn-danger" href="/Admin/DeleteAnnounc/@item.Id">Delete</a></td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

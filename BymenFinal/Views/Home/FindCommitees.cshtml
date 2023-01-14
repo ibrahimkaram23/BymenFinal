@@ -1,0 +1,8 @@
+﻿@model List<BymenFinal.Models.commitee>
+<select id="committee" name="committee" required>
+    <option value="">Select Committee</option>
+    @foreach (var item in Model)
+    {
+        <option>@item.comName</option>
+    }
+</select>
