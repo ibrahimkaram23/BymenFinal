@@ -454,12 +454,22 @@ namespace BymenFinal.Controllers
                 Sheet.Cells["B1"].Value = "fullName";
                 Sheet.Cells["C1"].Value = "emailAddress";
                 Sheet.Cells["D1"].Value = "university";
-                Sheet.Cells["E1"].Value = "eduYear";
-                Sheet.Cells["F1"].Value = "eduMajor";
-                Sheet.Cells["G1"].Value = "country";
-                Sheet.Cells["H1"].Value = "confrenceMode";
-                Sheet.Cells["I1"].Value = "committee";
-                Sheet.Cells["J1"].Value = "RegType";
+                Sheet.Cells["E1"].Value = "eduMajor";
+                Sheet.Cells["F1"].Value = "eduYear";
+                Sheet.Cells["G1"].Value = "conferenceMode";
+                Sheet.Cells["H1"].Value = "committee";
+                Sheet.Cells["I1"].Value = "age";
+                Sheet.Cells["J1"].Value = "enrolledAs";
+
+                Sheet.Cells["K1"].Value = "gender";
+                Sheet.Cells["L1"].Value = "nationality";
+                Sheet.Cells["M1"].Value = "countryOfResidence";
+                Sheet.Cells["N1"].Value = "phoneNb";
+                Sheet.Cells["O1"].Value = "vaccinated";
+                Sheet.Cells["P1"].Value = "doses";
+                Sheet.Cells["Q1"].Value = "passport/photoID";
+                Sheet.Cells["R1"].Value = "vaccinationCert";
+                Sheet.Cells["S1"].Value = "howHeard";
                 int row = 2;
                 foreach (var item in pers)
                 {
@@ -468,12 +478,22 @@ namespace BymenFinal.Controllers
                     Sheet.Cells[string.Format("B{0}", row)].Value = item.fullName;
                     Sheet.Cells[string.Format("C{0}", row)].Value = item.emailAddress;
                     Sheet.Cells[string.Format("D{0}", row)].Value = item.university;
-                    Sheet.Cells[string.Format("E{0}", row)].Value = item.eduYear;
-                    Sheet.Cells[string.Format("F{0}", row)].Value = item.eduMajor;
-                    Sheet.Cells[string.Format("G{0}", row)].Value = item.country;
-                    Sheet.Cells[string.Format("H{0}", row)].Value = item.conferaneModel;
-                    Sheet.Cells[string.Format("I{0}", row)].Value = item.committee;
-                    Sheet.Cells[string.Format("J{0}", row)].Value = item.partType;
+                    Sheet.Cells[string.Format("E{0}", row)].Value = item.eduMajor;
+                    Sheet.Cells[string.Format("F{0}", row)].Value = item.eduYear;
+                    Sheet.Cells[string.Format("G{0}", row)].Value = item.conferaneModel;
+                    Sheet.Cells[string.Format("H{0}", row)].Value = item.committee;
+                    Sheet.Cells[string.Format("I{0}", row)].Value = item.age;
+                    Sheet.Cells[string.Format("J{0}", row)].Value = item.enrolledAs;
+
+                    Sheet.Cells[string.Format("K{0}", row)].Value = item.gender;
+                    Sheet.Cells[string.Format("L{0}", row)].Value = item.nationality;
+                    Sheet.Cells[string.Format("M{0}", row)].Value = item.country;
+                    Sheet.Cells[string.Format("N{0}", row)].Value = item.countryCode item.phoneNb;
+                    Sheet.Cells[string.Format("O{0}", row)].Value = item.isVaccinated;
+                    Sheet.Cells[string.Format("P{0}", row)].Value = item.doses;
+                    Sheet.Cells[string.Format("Q{0}", row)].Value = item.passportPict;
+                    Sheet.Cells[string.Format("R{0}", row)].Value = item.vaccinationCert;
+                    Sheet.Cells[string.Format("S{0}", row)].Value = item.reference;
                     row++;
                 }
 

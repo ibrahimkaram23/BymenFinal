@@ -50,16 +50,16 @@ namespace BymenFinal.Models
         [StringLength(250)]
         public string partType { get; set; }
 
-        // public string age { get; set; }
-        // public string enrolledAs { get; set; }
-        // public string gender { get; set; }
-        // public string nationality { get; set; }
-        // public string countryCode { get; set; }
-        // public string phoneNb { get; set; }
-        // public string isVaccinated { get; set; }
-        // public string doses { get; set; }
-        // public string passportPict { get; set; }
-        // public string vaccinationCert { get; set; }
-        // public string reference { get; set; }
+        public string age { get; set; }
+        public string enrolledAs { get; set; }
+        public string gender { get; set; }
+        public string nationality { get; set; }
+        public string countryCode { get; set; }
+        public string phoneNb { get; set; }
+        public string isVaccinated { get; set; }
+        public string doses { get; set; }
+        public string passportPict { get; set; }
+        public string vaccinationCert { get; set; }
+        public string reference { get; set; }
     }
 }

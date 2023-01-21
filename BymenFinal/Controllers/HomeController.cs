@@ -60,12 +60,12 @@ namespace BymenFinal.Controllers
             return PartialView("FindCommitees",com);
         }
         [HttpPost]
-        public ActionResult Apply([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,partType")] person model, HttpPostedFileBase profilePict)
+        public ActionResult Apply([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,partType")] person model, HttpPostedFileBase profilePic)
         {
             if (ModelState.IsValid)
             {
                 string profilePicn = null;
-                if (profilePict == null)
+                if (profilePic == null)
                 {
                     TempData["Error"] = "Please attach payment proof and your pic";
                     fillDrops();
@@ -73,8 +73,8 @@ namespace BymenFinal.Controllers
                 }
                 else
                 {
-                    profilePicn = Guid.NewGuid().ToString() + profilePict.FileName;
-                    profilePict.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/ProfilePic/") + profilePicn);
+                    profilePicn = Guid.NewGuid().ToString() + profilePic.FileName;
+                    profilePic.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/ProfilePic/") + profilePicn);
                     //PaymentProofn = Guid.NewGuid().ToString() + Paymentfile.FileName;
                     //Paymentfile.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/PaymentProof/") + PaymentProofn);
                 }
