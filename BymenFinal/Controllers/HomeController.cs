@@ -60,11 +60,14 @@ namespace BymenFinal.Controllers
             return PartialView("FindCommitees",com);
         }
         [HttpPost]
-        public ActionResult Apply([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,partType")] person model, HttpPostedFileBase profilePic)
+        public ActionResult Apply([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,age,enrolledAs,gender,nationality,countryCode,phoneNb,isVaccinated,doses,reference")] person model, HttpPostedFileBase profilePic, HttpPostedFileBase passportPict, HttpPostedFileBase vaccinationCert)
         {
             if (ModelState.IsValid)
             {
                 string profilePicn = null;
+                string vaccinationCertn = null;
+                string passportPictn = null;
+
                 if (profilePic == null)
                 {
                     TempData["Error"] = "Please attach payment proof and your pic";
@@ -75,6 +78,10 @@ namespace BymenFinal.Controllers
                 {
                     profilePicn = Guid.NewGuid().ToString() + profilePic.FileName;
                     profilePic.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/ProfilePic/") + profilePicn);
+                    vaccinationCertn = Guid.NewGuid().ToString() + vaccinationCert.FileName;
+                    vaccinationCert.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/vaccinationCert/") + vaccinationCertn);
+                    passportPictn = Guid.NewGuid().ToString() + passportPict.FileName;
+                    passportPict.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/passportPict/") + passportPictn);
                     //PaymentProofn = Guid.NewGuid().ToString() + Paymentfile.FileName;
                     //Paymentfile.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/PaymentProof/") + PaymentProofn);
                 }
@@ -90,20 +97,18 @@ namespace BymenFinal.Controllers
                         eduYear = model.eduYear,
                         conferaneModel = model.conferaneModel,
                         committee = model.committee,
-
-                        // age = model.age;
-                        // enrolledAs = model.enrolledAs;
-                        // gender = model.gender;
-                        // nationality = model.nationality;
-                        // countryCode = model.countryCode;
-                        // phoneNb = model.phoneNb;
-                        // isVaccinated = model.isVaccinated;
-                        // doses = model.doses;
-                        // reference = model.reference;
-
+                        age = model.age,
+                        enrolledAs = model.enrolledAs,
+                        gender = model.gender,
+                        nationality = model.nationality,
+                        countryCode = model.countryCode,
+                        phoneNb = model.phoneNb,
+                        isVaccinated = model.isVaccinated,
+                        doses = model.doses,
+                        reference = model.reference,
                         country = model.country,
                         profilePic = profilePicn,
-                        partType = model.partType
+                        partType = "Delegate"
                     });
                     db.SaveChanges();
                     TempData["Success"] = "Success Registration See You There!";
@@ -127,12 +132,15 @@ namespace BymenFinal.Controllers
         }
 
         [HttpPost]
-        public ActionResult ApplyDelegation([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,partType")] person model, HttpPostedFileBase profilePict)
+        public ActionResult ApplyDelegation([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,age,enrolledAs,gender,nationality,countryCode,phoneNb,isVaccinated,doses,reference")] person model, HttpPostedFileBase profilePic, HttpPostedFileBase passportPict, HttpPostedFileBase vaccinationCert)
         {
             if (ModelState.IsValid)
             {
                 string profilePicn = null;
-                if (profilePict == null)
+                string vaccinationCertn = null;
+                string passportPictn = null;
+
+                if (profilePic == null)
                 {
                     TempData["Error"] = "Please attach payment proof and your pic";
                     fillDrops();
@@ -140,8 +148,12 @@ namespace BymenFinal.Controllers
                 }
                 else
                 {
-                    profilePicn = Guid.NewGuid().ToString() + profilePict.FileName;
-                    profilePict.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/ProfilePic/") + profilePicn);
+                    profilePicn = Guid.NewGuid().ToString() + profilePic.FileName;
+                    profilePic.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/ProfilePic/") + profilePicn);
+                    vaccinationCertn = Guid.NewGuid().ToString() + vaccinationCert.FileName;
+                    vaccinationCert.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/vaccinationCert/") + vaccinationCertn);
+                    passportPictn = Guid.NewGuid().ToString() + passportPict.FileName;
+                    passportPict.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/passportPict/") + passportPictn);
                     //PaymentProofn = Guid.NewGuid().ToString() + Paymentfile.FileName;
                     //Paymentfile.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/PaymentProof/") + PaymentProofn);
                 }
@@ -155,12 +167,22 @@ namespace BymenFinal.Controllers
                         university = model.university,
                         eduMajor = model.eduMajor,
                         eduYear = model.eduYear,
-                        country = model.country,
-                        committee = model.committee,
                         conferaneModel = model.conferaneModel,
-                        
+                        committee = model.committee,
+                        age = model.age,
+                        enrolledAs = model.enrolledAs,
+                        gender = model.gender,
+                        nationality = model.nationality,
+                        countryCode = model.countryCode,
+                        phoneNb = model.phoneNb,
+                        isVaccinated = model.isVaccinated,
+                        doses = model.doses,
+                        reference = model.reference,
+                        country = model.country,
                         profilePic = profilePicn,
-                        partType = model.partType
+                        vaccinationCert = vaccinationCertn,
+                        passportPict = passportPictn,
+                        partType = "Delegation"
                     });
                     db.SaveChanges();
                     TempData["Success"] = "Success Registration See You There!";
@@ -182,7 +204,71 @@ namespace BymenFinal.Controllers
                 return View(model);
             }
         }
-        
+        [HttpPost]
+        public ActionResult ApplyDelegationV2(Delegation model)
+        {
+                string profilePicn = null;
+                string vaccinationCertn = null;
+                string passportPictn = null;
+                if (model.profilePic == null)
+                {
+                    TempData["Error"] = "Please attach payment proof and your pic";
+                    fillDrops();
+                    return View(model);
+                }
+                else
+                {
+                    for (int i = 0; i < model.profilePic.Length; i++)
+                    {
+                        profilePicn = Guid.NewGuid().ToString() + model.profilePic[i].FileName;
+                        model.profilePic[i].SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/ProfilePic/") + profilePicn);
+                        vaccinationCertn = Guid.NewGuid().ToString() + model.vaccinationCert[i].FileName;
+                        model.vaccinationCert[i].SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/vaccinationCert/") + vaccinationCertn);
+                        passportPictn = Guid.NewGuid().ToString() + model.passportPict[i].FileName;
+                        model.passportPict[i].SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/passportPict/") + passportPictn);
+                        try
+                        {
+                            db.persons.Add(new person
+                            {
+                                fullName = model.fullName[i],
+                                emailAddress = model.emailAddress[i],
+                                university = model.university[i],
+                                eduMajor = model.eduMajor[i],
+                                eduYear = model.eduYear[i],
+                                conferaneModel = model.conferaneModel[i],
+                                committee = model.committee[i],
+                                age = model.age[i],
+                                enrolledAs = model.enrolledAs[i],
+                                gender = model.gender[i],
+                                nationality = model.nationality[i],
+                                countryCode = model.countryCode[i],
+                                phoneNb = model.phoneNb[i],
+                                isVaccinated = model.isVaccinated[i],
+                                doses = model.doses[i],
+                                reference = model.reference[i],
+                                country = model.country[i],
+                                profilePic = profilePicn,
+                                vaccinationCert = vaccinationCertn,
+                                passportPict = passportPictn,
+                                partType = "Delegation"
+                            });
+                            db.SaveChanges();
+                        }
+                        catch (Exception ex)
+                        {
+                            TempData["Error"] = ex.Message;
+                            fillDrops();
+                            return View(model);
+                        }
+                    }
+                    
+                    //PaymentProofn = Guid.NewGuid().ToString() + Paymentfile.FileName;
+                    //Paymentfile.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/PaymentProof/") + PaymentProofn);
+                }
+                TempData["Success"] = "Success Registration See You There!";
+                fillDrops();
+                return View();
+        }
         public ActionResult Commitees()
         {
             return View();

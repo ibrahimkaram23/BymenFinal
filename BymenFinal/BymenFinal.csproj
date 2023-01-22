@@ -980,6 +980,7 @@
     <Compile Include="Models\Announcement.cs" />
     <Compile Include="Models\BiruetDbContext.cs" />
     <Compile Include="Models\commitee.cs" />
+    <Compile Include="Models\Delegation.cs" />
     <Compile Include="Models\Gallery.cs" />
     <Compile Include="Models\person.cs" />
     <Compile Include="Models\sponser.cs" />
@@ -1210,6 +1211,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Partecepant\passportPict\" />
+    <Folder Include="Content\Partecepant\vaccinationCert\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1226,7 +1229,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>54918</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:54918/</IISUrl>
+          <IISUrl>http://localhost:55245/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

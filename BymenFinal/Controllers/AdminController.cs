@@ -488,7 +488,7 @@ namespace BymenFinal.Controllers
                     Sheet.Cells[string.Format("K{0}", row)].Value = item.gender;
                     Sheet.Cells[string.Format("L{0}", row)].Value = item.nationality;
                     Sheet.Cells[string.Format("M{0}", row)].Value = item.country;
-                    Sheet.Cells[string.Format("N{0}", row)].Value = item.countryCode item.phoneNb;
+                    Sheet.Cells[string.Format("N{0}", row)].Value = item.countryCode;
                     Sheet.Cells[string.Format("O{0}", row)].Value = item.isVaccinated;
                     Sheet.Cells[string.Format("P{0}", row)].Value = item.doses;
                     Sheet.Cells[string.Format("Q{0}", row)].Value = item.passportPict;
