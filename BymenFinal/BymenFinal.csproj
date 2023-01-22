@@ -933,11 +933,6 @@
     <Content Include="Content\js\countdown.js" />
     <Content Include="Content\js\schaduale.js" />
     <Content Include="Content\js\script.js" />
-    <Content Include="Content\Partecepant\ProfilePic\59fc5ba0-037f-4300-8d1d-b239998bda7818D43790-B3CD-4D1F-ACD8-5D75D52CADB6.jpeg" />
-    <Content Include="Content\Partecepant\ProfilePic\86cb5f1d-8e53-4dd6-af9b-2f0a9017fe94SOCH.png" />
-    <Content Include="Content\Partecepant\ProfilePic\8acd2021-591f-44fc-b7a0-f6d647c259bfphoto ID AUB.jpeg" />
-    <Content Include="Content\Partecepant\ProfilePic\aa5fbff1-d1cc-445e-9f49-f52488b9904d18D43790-B3CD-4D1F-ACD8-5D75D52CADB6.jpeg" />
-    <Content Include="Content\Partecepant\ProfilePic\dd9c05c3-aacb-4ac9-9216-3baf39b80853WIN_20230108_20_17_17_Pro.jpg" />
     <Content Include="Content\Reg\css\main2.css" />
     <Content Include="Content\Reg\js\main2.js" />
     <Content Include="Content\vol\css\main.css" />
@@ -1138,7 +1133,6 @@
     <Content Include="Content\fonts\Mercury-Regular.eot" />
     <Content Include="Content\fonts\Mercury-Regular.ttf" />
     <Content Include="Content\fonts\Mercury-Regular.woff" />
-    <Content Include="Content\Partecepant\ProfilePic\3b74c6d8-216c-4dd3-adec-0f13135ba9a6DownloadPart.xlsx" />
     <Content Include="Content\vol\vendor\font-awesome-4.7\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\vol\vendor\font-awesome-4.7\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\vol\vendor\font-awesome-4.7\fonts\fontawesome-webfont.woff" />
@@ -1202,6 +1196,8 @@
     <Content Include="Views\Home\WHO.cshtml" />
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Admin\Delegates.cshtml" />
+    <Content Include="Views\Admin\Delegation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1212,6 +1208,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Partecepant\passportPict\" />
+    <Folder Include="Content\Partecepant\ProfilePic\" />
     <Folder Include="Content\Partecepant\vaccinationCert\" />
   </ItemGroup>
   <PropertyGroup>

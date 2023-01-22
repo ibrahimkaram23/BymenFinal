@@ -908,88 +908,92 @@
         }
         var fileData = new FormData();
         function Store2() {
-            let name = document.getElementById("fullName").value;
-            let email = document.getElementById("emailAddress").value;
-            let universityy = document.getElementById("university").value;
-            let Major = document.getElementById("eduMajor").value;
-            let Year = document.getElementById("eduYear").value;
-            let Model = document.getElementById("conferaneModel").value;
-            let committeee = document.getElementById("committee").value;
-            let agee = document.getElementById("age").value;
-            let enrolledAss = document.getElementById("enrolledAs").value;
-            let genderr = document.getElementById("gender").value;
-            let nationalityy = document.getElementById("nationality").value;
-            let Codee = document.getElementById("countryCode").value;
-            let phoneNbb = document.getElementById("phoneNb").value;
-            let Vaccinated = document.getElementById("isVaccinated").value;
-            let dosess = document.getElementById("doses").value;
-            let referencee = document.getElementById("reference").value;
-            let countryy = document.getElementById("country").value;
-            let profilePicc = document.getElementById("profilePic").value;
-            let Cert = document.getElementById("vaccinationCert").value;
-            let Pict = document.getElementById("passportPict").value;
-            console.log(name);
-            if (name == undefined || email == undefined || universityy == undefined || Major == undefined || Year == undefined || Model == undefined || committeee == undefined || agee == undefined || enrolledAss == undefined || genderr == undefined || nationalityy == undefined || Codee == undefined || phoneNbb == undefined || Vaccinated == undefined || dosess == undefined || referencee == undefined || country == undefined || profilePicc == undefined || Cert == undefined || Pict == undefined) {
-                document.getElementById("displayNumbers").innerHTML += ` - Error: Please Enter All Feilds`;
+            const response = confirm("Are you sure you want to do that? You cannot edit this data agin!");
+            if (response) {
+                let name = document.getElementById("fullName").value;
+                let email = document.getElementById("emailAddress").value;
+                let universityy = document.getElementById("university").value;
+                let Major = document.getElementById("eduMajor").value;
+                let Year = document.getElementById("eduYear").value;
+                let Model = document.getElementById("conferaneModel").value;
+                let committeee = document.getElementById("committee").value;
+                let agee = document.getElementById("age").value;
+                let enrolledAss = document.getElementById("enrolledAs").value;
+                let genderr = document.getElementById("gender").value;
+                let nationalityy = document.getElementById("nationality").value;
+                let Codee = document.getElementById("countryCode").value;
+                let phoneNbb = document.getElementById("phoneNb").value;
+                let Vaccinated = document.getElementById("isVaccinated").value;
+                let dosess = document.getElementById("doses").value;
+                let referencee = document.getElementById("reference").value;
+                let countryy = document.getElementById("country").value;
+                let profilePicc = document.getElementById("profilePic").value;
+                let Cert = document.getElementById("vaccinationCert").value;
+                let Pict = document.getElementById("passportPict").value;
+                console.log(name);
+                if (name == undefined || email == undefined || universityy == undefined || Major == undefined || Year == undefined || Model == undefined || committeee == undefined || agee == undefined || enrolledAss == undefined || genderr == undefined || nationalityy == undefined || Codee == undefined || phoneNbb == undefined || Vaccinated == undefined || dosess == undefined || referencee == undefined || country == undefined || profilePicc == undefined || Cert == undefined || Pict == undefined) {
+                    document.getElementById("displayNumbers").innerHTML += ` - Error: Please Enter All Feilds`;
+                }
+                else {
+                    var profilePic = $("#profilePic").get(0);
+                    var vaccinationCert = $("#vaccinationCert").get(0);
+                    var passportPict = $("#passportPict").get(0);
+                    var files = profilePic.files;
+                    var files1 = vaccinationCert.files;
+                    var files2 = passportPict.files;
+
+                    for (var i = 0; i < files.length; i++) {
+                        fileData.append("profilePic", files[i]);
+                        fileData.append("vaccinationCert", files1[i]);
+                        fileData.append("passportPict", files2[i]);
+                    }
+                    fileData.append('fullName', $('#fullName').val());
+                    fileData.append('emailAddress', $('#emailAddress').val());
+                    fileData.append('university', $('#university').val());
+                    fileData.append('eduMajor', $('#eduMajor').val());
+                    fileData.append('eduYear', $('#eduYear').val());
+                    fileData.append('conferaneModel', $('#conferaneModel').val());
+                    fileData.append('committee', $('#committee').val());
+                    fileData.append('age', $('#age').val());
+                    fileData.append('enrolledAs', $('#enrolledAs').val());
+                    fileData.append('gender', $('#gender').val());
+                    fileData.append('nationality', $('#nationality').val());
+                    fileData.append('countryCode', $('#countryCode').val());
+                    fileData.append('phoneNb', $('#phoneNb').val());
+                    fileData.append('isVaccinated', $('#isVaccinated').val());
+                    fileData.append('doses', $('#doses').val());
+                    fileData.append('reference', $('#reference').val());
+                    fileData.append('country', $('#country').val());
+                    document.getElementById("fullName").value = "";
+                    document.getElementById("emailAddress").value = "";
+                    document.getElementById("university").value = "";
+                    document.getElementById("eduMajor").value = "";
+                    document.getElementById("eduYear").value = "";
+                    document.getElementById("conferaneModel").value = "";
+                    document.getElementById("committee").value = "";
+                    document.getElementById("age").value = "";
+                    document.getElementById("enrolledAs").value = "";
+                    document.getElementById("gender").value = "";
+                    document.getElementById("nationality").value = "";
+                    document.getElementById("countryCode").value = "";
+                    document.getElementById("phoneNb").value = "";
+                    document.getElementById("isVaccinated").value = "";
+                    document.getElementById("doses").value = "";
+                    document.getElementById("reference").value = "";
+                    document.getElementById("country").value = "";
+                    document.getElementById("profilePic").value = "";
+                    document.getElementById("vaccinationCert").value = "";
+                    document.getElementById("passportPict").value = "";
+                    frm++;
+                    document.getElementById("displayNumbers").innerHTML = `This is Record ${frm} of ${num}`;
+                    if (frm == num) {
+                        document.getElementById("suButton").style.display = "inline";
+                        document.getElementById("nxButton").style.display = "none";
+                    }
+                }
             }
             else {
-                var profilePic = $("#profilePic").get(0);
-                var vaccinationCert = $("#vaccinationCert").get(0);
-                var passportPict = $("#passportPict").get(0);
-                var files = profilePic.files;
-                var files1 = vaccinationCert.files;
-                var files2 = passportPict.files;
-
-                for (var i = 0; i < files.length; i++) {
-                    fileData.append("profilePic", files[i]);
-                    fileData.append("vaccinationCert", files1[i]);
-                    fileData.append("passportPict", files2[i]);
-                }
-                fileData.append('fullName', $('#fullName').val());
-                fileData.append('emailAddress', $('#emailAddress').val());
-                fileData.append('university', $('#university').val());
-                fileData.append('eduMajor', $('#eduMajor').val());
-                fileData.append('eduYear', $('#eduYear').val());
-                fileData.append('conferaneModel', $('#conferaneModel').val());
-                fileData.append('committee', $('#committee').val());
-                fileData.append('age', $('#age').val());
-                fileData.append('enrolledAs', $('#enrolledAs').val());
-                fileData.append('gender', $('#gender').val());
-                fileData.append('nationality', $('#nationality').val());
-                fileData.append('countryCode', $('#countryCode').val());
-                fileData.append('phoneNb', $('#phoneNb').val());
-                fileData.append('isVaccinated', $('#isVaccinated').val());
-                fileData.append('doses', $('#doses').val());
-                fileData.append('reference', $('#reference').val());
-                fileData.append('country', $('#country').val());
-                document.getElementById("fullName").value = "";
-                document.getElementById("emailAddress").value = "";
-                document.getElementById("university").value = "";
-                document.getElementById("eduMajor").value = "";
-                document.getElementById("eduYear").value = "";
-                document.getElementById("conferaneModel").value = "";
-                document.getElementById("committee").value = "";
-                document.getElementById("age").value = "";
-                document.getElementById("enrolledAs").value = "";
-                document.getElementById("gender").value = "";
-                document.getElementById("nationality").value = "";
-                document.getElementById("countryCode").value = "";
-                document.getElementById("phoneNb").value = "";
-                document.getElementById("isVaccinated").value = "";
-                document.getElementById("doses").value = "";
-                document.getElementById("reference").value = "";
-                document.getElementById("country").value = "";
-                document.getElementById("profilePic").value = "";
-                document.getElementById("vaccinationCert").value = "";
-                document.getElementById("passportPict").value = "";
-                frm++;
-                document.getElementById("displayNumbers").innerHTML = `This is Record ${frm} of ${num}`;
-                if (frm == num) {
-                    document.getElementById("suButton").style.display = "inline";
-                    document.getElementById("nxButton").style.display = "none";
-                }
-                console.log(fileData);
-
+                alert("Cancel was pressed");
             }
         }
         function Send2() {

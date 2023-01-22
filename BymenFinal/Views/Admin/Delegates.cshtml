@@ -1,8 +1,9 @@
 ﻿@model List<BymenFinal.Models.person>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Delegates";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
+
 
 <div class="row">
     <div class="col-sm-4 grid-margin">
@@ -13,9 +14,9 @@
                     <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
                             <h2 class="mb-0">@Session["RegCount"]</h2>
-                                
+
                         </div>
-                           
+
                     </div>
                     <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
@@ -32,9 +33,9 @@
                     <div class="col-8 col-sm-12 col-xl-8 my-auto">
                         <div class="d-flex d-sm-block d-md-flex align-items-center">
                             <h2 class="mb-0">@Session["InPerson"]</h2>
-                                
+
                         </div>
-                            
+
                     </div>
                     <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
                         <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
@@ -67,7 +68,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card-title">List of registers</h4>
-                <a href="/Admin/DownloadPart" class="btn btn-primary">Save to excel sheet</a>
+                <a href="/Admin/DownloadPart?stat=1" class="btn btn-primary">Save to excel sheet</a>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
@@ -89,7 +90,7 @@
                                 <th> Doses </th>
                                 <th> Passport Photo/ID </th>
                                 <th> Vaccination Certificate</th>
-                               
+
                                 <th> How Heard </th>
                             </tr>
                         </thead>
@@ -127,8 +128,8 @@
                                     @*<td> <a href="/Admin/Download?Id=@item.PaymentProof" class="btn btn-primary">Download</a></td>*@
                                 </tr>
                             }
-                            
-                            
+
+
                         </tbody>
                     </table>
                 </div>
@@ -136,3 +137,4 @@
         </div>
     </div>
 </div>
+

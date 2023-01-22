@@ -312,7 +312,25 @@ namespace BymenFinal.Controllers
             }
         }
         [HttpGet]
-        public ActionResult Download(string Id)
+        public ActionResult Delegates()
+        {
+            Session["RegCount"] = db.persons.Count();
+            Session["InPerson"] = db.persons.Where(n => n.conferaneModel == "In-Person" && n.partType == "Delegate").Count();
+            Session["Online"] = db.persons.Where(n => n.conferaneModel == "Online" && n.partType == "Delegate").Count();
+            var per = db.persons.Where(n => n.partType == "Delegate").ToList();
+            return View(per);
+        }
+        [HttpGet]
+        public ActionResult Delegation()
+        {
+            Session["RegCount"] = db.persons.Count();
+            Session["InPerson"] = db.persons.Where(n => n.conferaneModel == "In-Person" && n.partType == "Delegation").Count();
+            Session["Online"] = db.persons.Where(n => n.conferaneModel == "Online" && n.partType == "Delegation").Count();
+            var per = db.persons.Where(n => n.partType == "Delegation").ToList();
+            return View(per);
+        }
+        [HttpGet]
+        public ActionResult Download(string Id, string folder)
         {
             if (Session["Email"] == null)
             {
@@ -322,7 +340,7 @@ namespace BymenFinal.Controllers
             {
                 if (Id != null)
                 {
-                    string path = Server.MapPath("~/Content/Partecepant/PaymentProof/") + Id;
+                    string path = Server.MapPath("~/Content/Partecepant/"+ folder + "/") + Id;
                     return File(path, "application/octet-stream", Id);
                 }
                 return RedirectToAction("Index");
@@ -439,7 +457,7 @@ namespace BymenFinal.Controllers
                 return RedirectToAction("Gellary");
             }
         }
-        public void DownloadPart()
+        public void DownloadPart(int? stat)
         {
             if (Session["Email"] == null)
             {
@@ -448,6 +466,15 @@ namespace BymenFinal.Controllers
             else
             {
                 var pers = db.persons.ToList();
+                if (stat == 1)
+                {
+                    pers = db.persons.Where(n => n.partType == "Delegate").ToList();
+                }
+                else if (stat == 2)
+                {
+                    pers = db.persons.Where(n => n.partType == "Delegation").ToList();
+                }
+
                 ExcelPackage Ep = new ExcelPackage();
                 ExcelWorksheet Sheet = Ep.Workbook.Worksheets.Add("Report");
                 Sheet.Cells["A1"].Value = "Id";
@@ -460,7 +487,6 @@ namespace BymenFinal.Controllers
                 Sheet.Cells["H1"].Value = "committee";
                 Sheet.Cells["I1"].Value = "age";
                 Sheet.Cells["J1"].Value = "enrolledAs";
-
                 Sheet.Cells["K1"].Value = "gender";
                 Sheet.Cells["L1"].Value = "nationality";
                 Sheet.Cells["M1"].Value = "countryOfResidence";
@@ -484,7 +510,6 @@ namespace BymenFinal.Controllers
                     Sheet.Cells[string.Format("H{0}", row)].Value = item.committee;
                     Sheet.Cells[string.Format("I{0}", row)].Value = item.age;
                     Sheet.Cells[string.Format("J{0}", row)].Value = item.enrolledAs;
-
                     Sheet.Cells[string.Format("K{0}", row)].Value = item.gender;
                     Sheet.Cells[string.Format("L{0}", row)].Value = item.nationality;
                     Sheet.Cells[string.Format("M{0}", row)].Value = item.country;

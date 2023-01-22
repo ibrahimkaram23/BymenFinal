@@ -60,7 +60,7 @@ namespace BymenFinal.Controllers
             return PartialView("FindCommitees",com);
         }
         [HttpPost]
-        public ActionResult Apply([Bind(Include = "fullName,emailAddress,university,eduYear,eduMajor,country,conferaneModel,committee,age,enrolledAs,gender,nationality,countryCode,phoneNb,isVaccinated,doses,reference")] person model, HttpPostedFileBase profilePic, HttpPostedFileBase passportPict, HttpPostedFileBase vaccinationCert)
+        public ActionResult Apply(person model, HttpPostedFileBase profilePic, HttpPostedFileBase passportPict, HttpPostedFileBase vaccinationCert)
         {
             if (ModelState.IsValid)
             {
@@ -108,6 +108,8 @@ namespace BymenFinal.Controllers
                         reference = model.reference,
                         country = model.country,
                         profilePic = profilePicn,
+                        vaccinationCert = vaccinationCertn,
+                        passportPict = passportPictn,
                         partType = "Delegate"
                     });
                     db.SaveChanges();
