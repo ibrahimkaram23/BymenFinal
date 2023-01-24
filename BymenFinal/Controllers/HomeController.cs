@@ -27,7 +27,7 @@ namespace BymenFinal.Controllers
         }
         public ActionResult Announcement()
         {
-            var annou = db.Announcements.ToList();
+            var annou = db.Announcements.OrderByDescending(n => n.Id).ToList();
             return View(annou);
         }
         public ActionResult Apply()
@@ -67,7 +67,7 @@ namespace BymenFinal.Controllers
                 string profilePicn = null;
                 string vaccinationCertn = null;
                 string passportPictn = null;
-
+                
                 if (profilePic == null)
                 {
                     TempData["Error"] = "Please attach payment proof and your pic";
@@ -209,6 +209,7 @@ namespace BymenFinal.Controllers
         [HttpPost]
         public ActionResult ApplyDelegationV2(Delegation model)
         {
+                
                 string profilePicn = null;
                 string vaccinationCertn = null;
                 string passportPictn = null;
@@ -220,6 +221,9 @@ namespace BymenFinal.Controllers
                 }
                 else
                 {
+                    int? GId = db.persons.Select(x => x.GropId).Max().GetValueOrDefault();
+                    GId = GId == null ? 0 : GId;
+                    ++GId;
                     for (int i = 0; i < model.profilePic.Length; i++)
                     {
                         profilePicn = Guid.NewGuid().ToString() + model.profilePic[i].FileName;
@@ -252,7 +256,8 @@ namespace BymenFinal.Controllers
                                 profilePic = profilePicn,
                                 vaccinationCert = vaccinationCertn,
                                 passportPict = passportPictn,
-                                partType = "Delegation"
+                                partType = "Delegation",
+                                GropId = GId
                             });
                             db.SaveChanges();
                         }
@@ -267,9 +272,8 @@ namespace BymenFinal.Controllers
                     //PaymentProofn = Guid.NewGuid().ToString() + Paymentfile.FileName;
                     //Paymentfile.SaveAs(HttpContext.Server.MapPath("~/Content/Partecepant/PaymentProof/") + PaymentProofn);
                 }
-                TempData["Success"] = "Success Registration See You There!";
                 fillDrops();
-                return View();
+                return Json(new {data = "Success Registration See You There!" });
         }
         public ActionResult Commitees()
         {

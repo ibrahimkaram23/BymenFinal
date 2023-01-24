@@ -61,5 +61,6 @@ namespace BymenFinal.Models
         public string passportPict { get; set; }
         public string vaccinationCert { get; set; }
         public string reference { get; set; }
+        public int? GropId { get; set; }
     }
 }

@@ -314,7 +314,7 @@ namespace BymenFinal.Controllers
         [HttpGet]
         public ActionResult Delegates()
         {
-            Session["RegCount"] = db.persons.Count();
+            Session["RegCount"] = db.persons.Where(n => n.partType == "Delegate").Count();
             Session["InPerson"] = db.persons.Where(n => n.conferaneModel == "In-Person" && n.partType == "Delegate").Count();
             Session["Online"] = db.persons.Where(n => n.conferaneModel == "Online" && n.partType == "Delegate").Count();
             var per = db.persons.Where(n => n.partType == "Delegate").ToList();
@@ -323,7 +323,7 @@ namespace BymenFinal.Controllers
         [HttpGet]
         public ActionResult Delegation()
         {
-            Session["RegCount"] = db.persons.Count();
+            Session["RegCount"] = db.persons.Where(n => n.partType == "Delegation").Count();
             Session["InPerson"] = db.persons.Where(n => n.conferaneModel == "In-Person" && n.partType == "Delegation").Count();
             Session["Online"] = db.persons.Where(n => n.conferaneModel == "Online" && n.partType == "Delegation").Count();
             var per = db.persons.Where(n => n.partType == "Delegation").ToList();
@@ -490,12 +490,13 @@ namespace BymenFinal.Controllers
                 Sheet.Cells["K1"].Value = "gender";
                 Sheet.Cells["L1"].Value = "nationality";
                 Sheet.Cells["M1"].Value = "countryOfResidence";
-                Sheet.Cells["N1"].Value = "phoneNb";
+                Sheet.Cells["N1"].Value = "Phone Number";
                 Sheet.Cells["O1"].Value = "vaccinated";
                 Sheet.Cells["P1"].Value = "doses";
                 Sheet.Cells["Q1"].Value = "passport/photoID";
                 Sheet.Cells["R1"].Value = "vaccinationCert";
                 Sheet.Cells["S1"].Value = "howHeard";
+                Sheet.Cells["T1"].Value = "Group ID";
                 int row = 2;
                 foreach (var item in pers)
                 {
@@ -513,12 +514,14 @@ namespace BymenFinal.Controllers
                     Sheet.Cells[string.Format("K{0}", row)].Value = item.gender;
                     Sheet.Cells[string.Format("L{0}", row)].Value = item.nationality;
                     Sheet.Cells[string.Format("M{0}", row)].Value = item.country;
-                    Sheet.Cells[string.Format("N{0}", row)].Value = item.countryCode;
+                    Sheet.Cells[string.Format("N{0}", row)].Value = item.countryCode + " " + item.phoneNb;
                     Sheet.Cells[string.Format("O{0}", row)].Value = item.isVaccinated;
                     Sheet.Cells[string.Format("P{0}", row)].Value = item.doses;
-                    Sheet.Cells[string.Format("Q{0}", row)].Value = item.passportPict;
-                    Sheet.Cells[string.Format("R{0}", row)].Value = item.vaccinationCert;
+                    Sheet.Cells[string.Format("Q{0}", row)].Value = Server.MapPath("~/Content/Partecepant/passportPict") + item.passportPict;
+                    Sheet.Cells[string.Format("R{0}", row)].Value = Server.MapPath("~/Content/Partecepant/vaccinationCert") + item.vaccinationCert;
                     Sheet.Cells[string.Format("S{0}", row)].Value = item.reference;
+                    Sheet.Cells[string.Format("T{0}", row)].Value = item.GropId;
+
                     row++;
                 }
 

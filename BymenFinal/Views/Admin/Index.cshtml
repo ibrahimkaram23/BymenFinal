@@ -98,9 +98,10 @@
                             {
                                 <tr>
                                     <td>
-                                        <img src="~/Content/Partecepant/ProfilePic/@item.profilePic" alt="image" />
-                                        <span class="pl-2"> @item.fullName</span>
-                                    </td>
+                                        <a href="/Admin/Download?Id=@item.profilePic&folder=profilePic">
+                                            <img src="~/Content/Partecepant/ProfilePic/@item.profilePic" alt="image" /></a>
+                                            <span class="pl-2"> @item.fullName</span>
+</td>
                                     <td> @item.emailAddress </td>
                                     <td> @item.university </td>
                                     <td> @item.eduMajor </td>

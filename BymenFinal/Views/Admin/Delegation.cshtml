@@ -92,6 +92,7 @@
                                 <th> Vaccination Certificate</th>
 
                                 <th> How Heard </th>
+                                <th> Group ID </th>
                             </tr>
                         </thead>
                         <tbody>
@@ -99,7 +100,9 @@
                             {
                                 <tr>
                                     <td>
-                                        <img src="~/Content/Partecepant/ProfilePic/@item.profilePic" alt="image" />
+                                        <a href="/Admin/Download?Id=@item.profilePic&folder=profilePic">
+                                            <img src="~/Content/Partecepant/ProfilePic/@item.profilePic" alt="image" />
+                                        </a>
                                         <span class="pl-2"> @item.fullName</span>
                                     </td>
                                     <td> @item.emailAddress </td>
@@ -123,6 +126,7 @@
                                         <a href="/Admin/Download?Id=@item.vaccinationCert&folder=vaccinationCert"><img src="~/Content/Partecepant/vaccinationCert/@item.vaccinationCert" alt="image" /></a>
                                     </td>
                                     <td> @item.reference </td>
+                                    <td> @item.GropId </td>
                                     @*<td> @item.partType </td>*@
 
                                     @*<td> <a href="/Admin/Download?Id=@item.PaymentProof" class="btn btn-primary">Download</a></td>*@
