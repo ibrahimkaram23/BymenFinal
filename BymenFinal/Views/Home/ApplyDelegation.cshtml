@@ -904,14 +904,14 @@
         var frm = 1;
         function getNum() {
             num = document.getElementById("num").value;
-            if(true)
+            if(num >= 8)
                 document.getElementById("displayNumbers").innerHTML = `This is Record ${frm} of ${num}`;
             else
                 document.getElementById("displayNumbers").innerHTML = `Minimum Records is 8`;
         }
         var fileData = new FormData();
         function Store2() {
-            const response = confirm("Are you sure you want to do that? You cannot edit this data agin!");
+            const response = confirm("Are you sure you want to do that? You cannot edit this data again!");
             if (response) {
                 let name = document.getElementById("fullName").value;
                 let email = document.getElementById("emailAddress").value;
@@ -1013,7 +1013,8 @@
                 },
                 success: function (data) {
                     frm = 1;
-                    $('#message').html(data);
+                    document.getElementById("displayNumbers").innerHTML = `This is Record ${frm} of ${num}`;
+                    document.getElementById("message").innerHTML = "Successfully Registeration See You There!"
                     $('#message').css("display", "block");
                 }
             });
